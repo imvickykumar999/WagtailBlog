@@ -13,6 +13,7 @@ ALLOWED_HOSTS = [
     "cleanblog.pythonanywhere.com",
     "www.cleanblog.pythonanywhere.com",
     'free-camel-deadly.ngrok-free.app',
+    'organic-space-adventure-64xjgpxvqxxf4xq-8000.app.github.dev',
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
