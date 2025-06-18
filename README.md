@@ -23,3 +23,4 @@ Terminal 2
 
 ![image](https://github.com/user-attachments/assets/a050af43-7d7f-47f8-a872-1d1242d5adf5)
 ![image](https://github.com/user-attachments/assets/473eb9e9-6ac6-438f-b9cd-df1b13810f1d)
+![image](https://github.com/user-attachments/assets/d03f8a71-3eae-4c4a-8508-fb839f1f62cb)
