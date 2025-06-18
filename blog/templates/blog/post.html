@@ -1,0 +1,50 @@
+{% extends "blog/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static tz %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+
+{% if page.header_image %}
+    {% image page.header_image fill-1200x400 as header_img %}
+    {% with header_img.url as bg_url %}
+        <header class="intro-header" style="background-image: url('{{ bg_url }}')">
+    {% endwith %}
+{% else %}
+    {% static 'img/post-bg.jpg' as fallback_image %}
+    {% with fallback_image as bg_url %}
+        <header class="intro-header" style="background-image: url('{{ bg_url }}')">
+    {% endwith %}
+{% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>{{ page.title }}</h1>
+                    {% if page.subtitle %}
+                        <h2 class="subheading">{{ page.subtitle }}</h2>
+                    {% endif %}
+                    <span class="meta">
+                        Posted by {{ page.owner.get_full_name|default:"Author" }} on {{ page.date }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% if page.intro %}
+                    <p><em>{{ page.intro }}</em></p>
+                {% endif %}
+                <div>{{ page.body|richtext }}</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+<header class="intro-header" style="background-image: url('{% static 'img/privacy-bg.jpg' %}')">
+    <div class="container">
+        <div class="page-heading">
+            <h1>{{ page.title }}</h1>
+            <hr class="small">
+            <span class="subheading">We respect your privacy</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="rich-text">
+        {{ page.body|richtext }}
+    </div>
+</div>
+{% endblock %}

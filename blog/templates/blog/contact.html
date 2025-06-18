@@ -1,0 +1,90 @@
+{% extends "blog/base.html" %}
+{% load static wagtailcore_tags widget_tweaks tz %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url('{% static 'img/contact-bg.jpg' %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="page-heading">
+                    <h1>{{ page.title }}</h1>
+                    <hr class="small">
+                    <span class="subheading">Have questions? I have answers (maybe).</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <p>{{ page.intro|default:"Fill out the form below to get in touch." }}</p>
+
+            <form method="POST" action="{% pageurl page %}">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-group floating-label-form-group controls">
+                    <label for="id_name">Name</label>
+                    {% render_field form.name class="form-control" placeholder="Name" %}
+                    {{ form.name.errors }}
+                </div>
+
+                <div class="form-group floating-label-form-group controls">
+                    <label for="id_email">Email Address</label>
+                    {% render_field form.email class="form-control" placeholder="Email Address" %}
+                    {{ form.email.errors }}
+                </div>
+
+                <div class="form-group floating-label-form-group controls">
+                    <label for="id_phone">Phone Number</label>
+                    {% render_field form.phone class="form-control" placeholder="Phone Number" %}
+                    {{ form.phone.errors }}
+                </div>
+
+                <div class="form-group floating-label-form-group controls">
+                    <label for="id_message">Message</label>
+                    {% render_field form.message class="form-control" placeholder="Message" rows="5" %}
+                    {{ form.message.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.captcha }}
+                    {{ form.captcha.errors }}
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Send</button>
+                </div>
+            </form>
+
+            {% if form_submitted %}
+                <div class="alert alert-success">Thank you! Your message has been sent.</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LccDmUrAAAAANkDSlsO1z4I3PR1NLVQSzq7WlYb"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('{{ RECAPTCHA_PUBLIC_KEY }}', { action: 'contact' }).then(function (token) {
+            let input = document.querySelector('input[name="g-recaptcha-response"]');
+            if (!input) {
+                input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', 'g-recaptcha-response');
+                document.forms[0].appendChild(input);
+            }
+            input.value = token;
+        });
+    });
+</script>
+
+{% endblock %}
