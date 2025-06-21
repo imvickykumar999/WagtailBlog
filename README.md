@@ -1,6 +1,6 @@
 # Wagtail Blog
 
-    https://free-camel-deadly.ngrok-free.app/django-admin/
+    docker pull imvickykumar999/django-repo:latest
     
 ![image](https://github.com/user-attachments/assets/2c914d09-886a-4bfe-8276-63c47cd0b267)
 ![image](https://github.com/user-attachments/assets/a6d34ead-c674-49d8-b33f-a853dba98364)
