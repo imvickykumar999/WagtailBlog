@@ -1,7 +1,8 @@
 # Wagtail Blog
 
-    docker pull imvickykumar999/django-repo:latest
-    
+    docker pull imvickykumar999/cleanblog-wagtail
+    docker run -p 8000:8000 imvickykumar999/cleanblog-wagtail
+
 ![image](https://github.com/user-attachments/assets/2c914d09-886a-4bfe-8276-63c47cd0b267)
 ![image](https://github.com/user-attachments/assets/a6d34ead-c674-49d8-b33f-a853dba98364)
 
